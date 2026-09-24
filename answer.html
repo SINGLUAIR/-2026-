@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>キーワード一覧｜世界征服サミット2026</title>
+  <style>
+    :root {
+      --navy: #10172c;
+      --gold: #d9b65a;
+      --cream: #fff9e9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 40px 16px;
+      color: var(--cream);
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      background:
+        radial-gradient(circle at top, rgba(217, 182, 90, 0.18), transparent 35%),
+        linear-gradient(135deg, #090d1b, var(--navy) 55%, #25101b);
+    }
+
+    main {
+      width: min(100%, 720px);
+      margin: 0 auto;
+      padding: 40px 28px;
+      border: 1px solid rgba(217, 182, 90, 0.7);
+      border-radius: 8px;
+      background: rgba(10, 14, 30, 0.78);
+    }
+
+    h1,
+    h2 {
+      color: var(--gold);
+      text-align: center;
+    }
+
+    #message {
+      min-height: 1.5em;
+      margin: 28px 0;
+      text-align: center;
+    }
+
+    .success {
+      color: #f3d983;
+    }
+
+    .error {
+      color: #ff9e9e;
+    }
+
+    #keyword-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .keyword {
+      padding: 16px;
+      border-left: 4px solid var(--gold);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    a {
+      display: block;
+      width: fit-content;
+      margin: 32px auto 0;
+      padding: 14px 24px;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      color: #241507;
+      text-decoration: none;
+      font-weight: bold;
+      background: linear-gradient(#f3d983, var(--gold));
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>開示されたキーワード</h1>
+    <p id="message" aria-live="polite"></p>
+
+    <ul id="keyword-list"></ul>
+
+    <a href="index.html">解答フォームへ戻る</a>
+  </main>
+
+  <script>
+    const answers = {
+      "かりのこたえ1": "黄金の招待状",
+      "かりのこたえ2": "月影の会議室",
+      "かりのこたえ3": "秘密の合言葉",
+      "かりのこたえ4": "世界征服計画書"
+    };
+
+    const storageKey = "unlockedKeywords";
+    const answer = new URLSearchParams(window.location.search)
+      .get("answer")
+      ?.trim();
+
+    const keywordList = document.getElementById("keyword-list");
+    const message = document.getElementById("message");
+
+    const unlockedKeywords = JSON.parse(
+      localStorage.getItem(storageKey) || "[]"
+    );
+
+    const keyword = answers[answer];
+
+    if (keyword && !unlockedKeywords.includes(keyword)) {
+      unlockedKeywords.push(keyword);
+      localStorage.setItem(storageKey, JSON.stringify(unlockedKeywords));
+      message.textContent = `キーワード「${keyword}」が開示されました。`;
+      message.className = "success";
+    } else if (keyword) {
+      message.textContent = `キーワード「${keyword}」はすでに開示されています。`;
+      message.className = "success";
+    } else {
+      message.textContent = "その解答ではキーワードは開示されません。";
+      message.className = "error";
+    }
+
+    unlockedKeywords.forEach((unlockedKeyword) => {
+      const item = document.createElement("li");
+      item.className = "keyword";
+      item.textContent = unlockedKeyword;
+      keywordList.appendChild(item);
+    });
+  </script>
+</body>
+</html>

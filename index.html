@@ -7,7 +7,6 @@
   <style>
     :root {
       --navy: #10172c;
-      --wine: #65172b;
       --gold: #d9b65a;
       --cream: #fff9e9;
     }
@@ -35,13 +34,6 @@
       border: 1px solid rgba(217, 182, 90, 0.7);
       border-radius: 8px;
       background: rgba(10, 14, 30, 0.75);
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.45);
-    }
-
-    .crown {
-      color: var(--gold);
-      font-size: 2.4rem;
-      margin: 0;
     }
 
     h1 {
@@ -51,9 +43,10 @@
       line-height: 1.5;
     }
 
-    .subtitle {
-      margin-bottom: 36px;
-      letter-spacing: 0.12em;
+    .crown {
+      margin: 0;
+      color: var(--gold);
+      font-size: 2.4rem;
     }
 
     button {
@@ -65,12 +58,6 @@
       font-weight: bold;
       cursor: pointer;
       background: linear-gradient(#f3d983, var(--gold));
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(217, 182, 90, 0.3);
     }
 
     #answer-area {
@@ -80,13 +67,9 @@
       border-top: 1px solid rgba(217, 182, 90, 0.45);
     }
 
-    label {
-      display: block;
-      margin-bottom: 12px;
-    }
-
     input {
       width: min(100%, 420px);
+      margin: 12px 0 16px;
       padding: 14px;
       border: 1px solid var(--gold);
       border-radius: 4px;
@@ -94,23 +77,19 @@
       font: inherit;
       background: rgba(255, 255, 255, 0.08);
     }
-
-    .submit-button {
-      margin-top: 16px;
-    }
   </style>
 </head>
 <body>
   <main class="container">
     <p class="crown">♛</p>
     <h1>やんごとなき貴族の戯れ<br>― 世界征服サミット2026 ―</h1>
-    <p class="subtitle">選ばれし者よ、謎を解き明かせ。</p>
+    <p>選ばれし者よ、謎を解き明かせ。</p>
 
     <button id="start-button" type="button">謎解きを開始</button>
 
     <section id="answer-area">
-      <form>
-        <label for="answer">解答を入力してください</label>
+      <form action="answer.html" method="get">
+        <label for="answer">解答を入力してください</label><br>
         <input
           id="answer"
           name="answer"
@@ -118,9 +97,8 @@
           placeholder="ここに解答を入力"
           autocomplete="off"
           required
-        />
-        <br>
-        <button class="submit-button" type="submit">解答する</button>
+        ><br>
+        <button type="submit">解答してキーワードを開示する</button>
       </form>
     </section>
   </main>
