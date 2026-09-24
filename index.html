@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>やんごとなき貴族の戯れ-世界征服サミット2026-</title>
+  <style>
+    :root {
+      --navy: #10172c;
+      --wine: #65172b;
+      --gold: #d9b65a;
+      --cream: #fff9e9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      color: var(--cream);
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      background:
+        radial-gradient(circle at top, rgba(217, 182, 90, 0.2), transparent 35%),
+        linear-gradient(135deg, #090d1b, var(--navy) 55%, #25101b);
+    }
+
+    .container {
+      width: min(90%, 720px);
+      padding: 64px 28px;
+      text-align: center;
+      border: 1px solid rgba(217, 182, 90, 0.7);
+      border-radius: 8px;
+      background: rgba(10, 14, 30, 0.75);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .crown {
+      color: var(--gold);
+      font-size: 2.4rem;
+      margin: 0;
+    }
+
+    h1 {
+      margin: 20px 0 12px;
+      color: var(--gold);
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      line-height: 1.5;
+    }
+
+    .subtitle {
+      margin-bottom: 36px;
+      letter-spacing: 0.12em;
+    }
+
+    button {
+      padding: 16px 36px;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      color: #241507;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      background: linear-gradient(#f3d983, var(--gold));
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(217, 182, 90, 0.3);
+    }
+
+    #answer-area {
+      display: none;
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(217, 182, 90, 0.45);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    input {
+      width: min(100%, 420px);
+      padding: 14px;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      color: var(--cream);
+      font: inherit;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .submit-button {
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <p class="crown">♛</p>
+    <h1>やんごとなき貴族の戯れ<br>― 世界征服サミット2026 ―</h1>
+    <p class="subtitle">選ばれし者よ、謎を解き明かせ。</p>
+
+    <button id="start-button" type="button">謎解きを開始</button>
+
+    <section id="answer-area">
+      <form>
+        <label for="answer">解答を入力してください</label>
+        <input
+          id="answer"
+          name="answer"
+          type="text"
+          placeholder="ここに解答を入力"
+          autocomplete="off"
+          required
+        />
+        <br>
+        <button class="submit-button" type="submit">解答する</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const startButton = document.getElementById("start-button");
+    const answerArea = document.getElementById("answer-area");
+    const answerInput = document.getElementById("answer");
+
+    startButton.addEventListener("click", () => {
+      answerArea.style.display = "block";
+      startButton.style.display = "none";
+      answerInput.focus();
+    });
+  </script>
+</body>
+</html>
