@@ -80,6 +80,53 @@
       font-weight: bold;
       background: linear-gradient(#f3d983, var(--gold));
     }
+
+    body {
+  min-height: 100dvh;
+  padding:
+    max(20px, env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right))
+    max(20px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
+}
+
+.keyword {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+a {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 32px 18px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    line-height: 1.45;
+  }
+
+  #message {
+    margin: 22px 0;
+  }
+
+  .keyword {
+    padding: 14px;
+  }
+
+  a {
+    width: 100%;
+    margin-top: 24px;
+  }
+}
+
   </style>
 </head>
 <body>

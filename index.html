@@ -77,6 +77,56 @@
       font: inherit;
       background: rgba(255, 255, 255, 0.08);
     }
+    
+    body {
+  min-height: 100dvh;
+  padding:
+    max(16px, env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right))
+    max(16px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
+}
+
+.container {
+  width: min(100%, 720px);
+}
+
+button,
+input {
+  min-height: 48px;
+  font-size: 16px;
+}
+
+button {
+  max-width: 100%;
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 40px 18px;
+  }
+
+  h1 {
+    margin-top: 14px;
+    font-size: 1.75rem;
+    line-height: 1.45;
+  }
+
+  .crown {
+    font-size: 2rem;
+  }
+
+  #answer-area {
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+
+  input,
+  button {
+    width: 100%;
+  }
+}
   </style>
 </head>
 <body>
