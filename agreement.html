@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agreement｜世界征服サミット2026</title>
+  <style>
+    :root {
+      --navy: #10172c;
+      --gold: #d9b65a;
+      --cream: #fff9e9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      padding:
+        max(20px, env(safe-area-inset-top))
+        max(16px, env(safe-area-inset-right))
+        max(20px, env(safe-area-inset-bottom))
+        max(16px, env(safe-area-inset-left));
+      color: var(--cream);
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      background:
+        radial-gradient(circle at top, rgba(217, 182, 90, 0.18), transparent 35%),
+        linear-gradient(135deg, #090d1b, var(--navy) 55%, #25101b);
+    }
+
+    main {
+      width: min(100%, 720px);
+      margin: 0 auto;
+      padding: 40px 28px;
+      border: 1px solid rgba(217, 182, 90, 0.7);
+      border-radius: 8px;
+      background: rgba(10, 14, 30, 0.78);
+    }
+
+    h1 {
+      color: var(--gold);
+      text-align: center;
+    }
+
+    #message {
+      min-height: 1.5em;
+      margin: 28px 0;
+      text-align: center;
+    }
+
+    .success {
+      color: #f3d983;
+    }
+
+    .error {
+      color: #ff9e9e;
+    }
+
+    #agreement-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .agreement {
+      overflow-wrap: anywhere;
+      padding: 16px;
+      border-left: 4px solid var(--gold);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .page-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .page-actions a {
+      flex: 1;
+      min-width: 0;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      color: #241507;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      background: linear-gradient(#f3d983, var(--gold));
+    }
+
+    @media (max-width: 480px) {
+      main {
+        padding: 32px 18px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+        line-height: 1.45;
+      }
+
+      #message {
+        margin: 22px 0;
+      }
+
+      .agreement {
+        padding: 14px;
+      }
+
+      .page-actions {
+        gap: 8px;
+        margin-top: 24px;
+      }
+
+      .page-actions a {
+        padding: 10px 6px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Agreement</h1>
+    <p id="message" aria-live="polite"></p>
+
+    <ul id="agreement-list"></ul>
+
+    <nav class="page-actions" aria-label="ページ移動">
+      <a href="answer.html">Answer</a>
+      <a href="agreement.html">Agreement</a>
+      <a href="index.html">解答フォームへ戻る</a>
+    </nav>
+  </main>
+
+  <script src="keywords.js"></script>
+  <script>
+    const storageKey = "unlockedAgreements";
+    const answer = new URLSearchParams(window.location.search)
+      .get("answer")
+      ?.trim();
+    const agreementList = document.getElementById("agreement-list");
+    const message = document.getElementById("message");
+    const unlockedAgreementAnswers = JSON.parse(
+      localStorage.getItem(storageKey) || "[]"
+    );
+    const entry = window.keywordEntries.find(
+      (keywordEntry) =>
+        keywordEntry.answer === answer && keywordEntry.type === "agreement"
+    );
+    const agreement = entry?.content;
+
+    if (agreement && !unlockedAgreementAnswers.includes(entry.answer)) {
+      unlockedAgreementAnswers.push(entry.answer);
+      localStorage.setItem(storageKey, JSON.stringify(unlockedAgreementAnswers));
+      message.textContent = "Agreementが開示されました。";
+      message.className = "success";
+    } else if (agreement) {
+      message.textContent = "このAgreementはすでに開示されています。";
+      message.className = "success";
+    } else {
+      message.textContent = "その解答ではAgreementは開示されません。";
+      message.className = "error";
+    }
+
+    window.keywordEntries
+      .filter(
+        (keywordEntry) =>
+          keywordEntry.type === "agreement" &&
+          unlockedAgreementAnswers.includes(keywordEntry.answer)
+      )
+      .forEach((unlockedAgreement) => {
+        const item = document.createElement("li");
+        item.className = "agreement";
+        item.textContent = unlockedAgreement.content;
+        agreementList.appendChild(item);
+      });
+  </script>
+</body>
+</html>

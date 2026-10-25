@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>キーワード一覧｜世界征服サミット2026</title>
+  <title>Answer｜世界征服サミット2026</title>
   <style>
     :root {
       --navy: #10172c;
@@ -68,14 +68,24 @@
       background: rgba(255, 255, 255, 0.07);
     }
 
-    a {
-      display: block;
-      width: fit-content;
-      margin: 32px auto 0;
-      padding: 14px 24px;
+    .page-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .page-actions a {
+      flex: 1;
+      min-width: 0;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
       border: 1px solid var(--gold);
       border-radius: 4px;
       color: #241507;
+      text-align: center;
       text-decoration: none;
       font-weight: bold;
       background: linear-gradient(#f3d983, var(--gold));
@@ -93,14 +103,6 @@
 .keyword {
   overflow-wrap: anywhere;
   word-break: break-word;
-}
-
-a {
-  min-height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
 @media (max-width: 480px) {
@@ -121,9 +123,14 @@ a {
     padding: 14px;
   }
 
-  a {
-    width: 100%;
+  .page-actions {
+    gap: 8px;
     margin-top: 24px;
+  }
+
+  .page-actions a {
+    padding: 10px 6px;
+    font-size: 0.9rem;
   }
 }
 
@@ -131,22 +138,20 @@ a {
 </head>
 <body>
   <main>
-    <h1>開示されたキーワード</h1>
+    <h1>Answer</h1>
     <p id="message" aria-live="polite"></p>
 
     <ul id="keyword-list"></ul>
 
-    <a href="index.html">解答フォームへ戻る</a>
+    <nav class="page-actions" aria-label="ページ移動">
+      <a href="answer.html">Answer</a>
+      <a href="agreement.html">Agreement</a>
+      <a href="index.html">解答フォームへ戻る</a>
+    </nav>
   </main>
 
+  <script src="keywords.js"></script>
   <script>
-    const answers = {
-      "かりのこたえ1": "黄金の招待状",
-      "かりのこたえ2": "月影の会議室",
-      "かりのこたえ3": "秘密の合言葉",
-      "かりのこたえ4": "世界征服計画書"
-    };
-
     const storageKey = "unlockedKeywords";
     const answer = new URLSearchParams(window.location.search)
       .get("answer")
@@ -154,12 +159,14 @@ a {
 
     const keywordList = document.getElementById("keyword-list");
     const message = document.getElementById("message");
-
     const unlockedKeywords = JSON.parse(
       localStorage.getItem(storageKey) || "[]"
     );
-
-    const keyword = answers[answer];
+    const entry = window.keywordEntries.find(
+      (keywordEntry) =>
+        keywordEntry.answer === answer && keywordEntry.type === "answer"
+    );
+    const keyword = entry?.content;
 
     if (keyword && !unlockedKeywords.includes(keyword)) {
       unlockedKeywords.push(keyword);

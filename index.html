@@ -153,15 +153,26 @@ button {
     </section>
   </main>
 
+  <script src="keywords.js"></script>
   <script>
     const startButton = document.getElementById("start-button");
     const answerArea = document.getElementById("answer-area");
     const answerInput = document.getElementById("answer");
+    const answerForm = answerArea.querySelector("form");
 
     startButton.addEventListener("click", () => {
       answerArea.style.display = "block";
       startButton.style.display = "none";
       answerInput.focus();
+    });
+
+    answerForm.addEventListener("submit", () => {
+      const entry = window.keywordEntries.find(
+        (keywordEntry) => keywordEntry.answer === answerInput.value.trim()
+      );
+
+      answerForm.action =
+        entry?.type === "agreement" ? "agreement.html" : "answer.html";
     });
   </script>
 </body>
