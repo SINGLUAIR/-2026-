@@ -63,9 +63,25 @@
     }
 
     .keyword {
-      padding: 16px;
       border-left: 4px solid var(--gold);
       background: rgba(255, 255, 255, 0.07);
+    }
+
+    .keyword details {
+      padding: 16px;
+    }
+
+    .keyword summary {
+      color: var(--gold);
+      font-size: 1.15rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .keyword p {
+      margin: 14px 0 0;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .page-actions {
@@ -102,7 +118,6 @@
 
 .keyword {
   overflow-wrap: anywhere;
-  word-break: break-word;
 }
 
 @media (max-width: 480px) {
@@ -120,6 +135,10 @@
   }
 
   .keyword {
+    padding: 0;
+  }
+
+  .keyword details {
     padding: 14px;
   }
 
@@ -138,14 +157,13 @@
 </head>
 <body>
   <main>
-    <h1>Answer</h1>
+    <h1>あなたが集めた証言</h1>
     <p id="message" aria-live="polite"></p>
 
     <ul id="keyword-list"></ul>
 
     <nav class="page-actions" aria-label="ページ移動">
-      <a href="answer.html">Answer</a>
-      <a href="agreement.html">Agreement</a>
+      <a href="agreement.html">協定一覧へ</a>
       <a href="index.html">解答フォームへ戻る</a>
     </nav>
   </main>
@@ -176,17 +194,29 @@
     } else if (keyword) {
       message.textContent = `キーワード「${keyword}」はすでに開示されています。`;
       message.className = "success";
-    } else {
+    } else if (answer !== undefined) {
       message.textContent = "その解答ではキーワードは開示されません。";
       message.className = "error";
     }
 
-    unlockedKeywords.forEach((unlockedKeyword) => {
-      const item = document.createElement("li");
-      item.className = "keyword";
-      item.textContent = unlockedKeyword;
-      keywordList.appendChild(item);
-    });
+    window.keywordEntries
+      .filter(
+        (keywordEntry) =>
+          keywordEntry.type === "answer" &&
+          unlockedKeywords.includes(keywordEntry.content)
+      )
+      .forEach((unlockedKeyword) => {
+        const item = document.createElement("li");
+        item.className = "keyword";
+        const details = document.createElement("details");
+        const title = document.createElement("summary");
+        const content = document.createElement("p");
+        title.textContent = unlockedKeyword.title;
+        content.textContent = unlockedKeyword.content;
+        details.append(title, content);
+        item.appendChild(details);
+        keywordList.appendChild(item);
+      });
   </script>
 </body>
 </html>

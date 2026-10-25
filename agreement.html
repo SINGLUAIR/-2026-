@@ -67,9 +67,25 @@
 
     .agreement {
       overflow-wrap: anywhere;
-      padding: 16px;
       border-left: 4px solid var(--gold);
       background: rgba(255, 255, 255, 0.07);
+    }
+
+    .agreement details {
+      padding: 16px;
+    }
+
+    .agreement summary {
+      color: var(--gold);
+      font-size: 1.15rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .agreement p {
+      margin: 14px 0 0;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .page-actions {
@@ -110,6 +126,10 @@
       }
 
       .agreement {
+        padding: 0;
+      }
+
+      .agreement details {
         padding: 14px;
       }
 
@@ -127,14 +147,13 @@
 </head>
 <body>
   <main>
-    <h1>Agreement</h1>
+    <h1>あなたが解放した協定一覧</h1>
     <p id="message" aria-live="polite"></p>
 
     <ul id="agreement-list"></ul>
 
     <nav class="page-actions" aria-label="ページ移動">
-      <a href="answer.html">Answer</a>
-      <a href="agreement.html">Agreement</a>
+      <a href="answer.html">証言一覧へ</a>
       <a href="index.html">解答フォームへ戻る</a>
     </nav>
   </main>
@@ -164,7 +183,7 @@
     } else if (agreement) {
       message.textContent = "このAgreementはすでに開示されています。";
       message.className = "success";
-    } else {
+    } else if (answer !== undefined) {
       message.textContent = "その解答ではAgreementは開示されません。";
       message.className = "error";
     }
@@ -178,7 +197,13 @@
       .forEach((unlockedAgreement) => {
         const item = document.createElement("li");
         item.className = "agreement";
-        item.textContent = unlockedAgreement.content;
+        const details = document.createElement("details");
+        const title = document.createElement("summary");
+        const content = document.createElement("p");
+        title.textContent = unlockedAgreement.title;
+        content.textContent = unlockedAgreement.content;
+        details.append(title, content);
+        item.appendChild(details);
         agreementList.appendChild(item);
       });
   </script>
