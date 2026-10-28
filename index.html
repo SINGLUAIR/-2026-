@@ -168,8 +168,11 @@ button {
 
     answerForm.addEventListener("submit", () => {
       const entry = window.keywordEntries.find(
-        (keywordEntry) => keywordEntry.answer === answerInput.value.trim()
-      );
+      (keywordEntry) =>
+        (keywordEntry.answer === answer ||
+          keywordEntry.aliases?.includes(answer)) &&
+        keywordEntry.type === "answer"
+    );
 
       answerForm.action =
         entry?.type === "agreement" ? "agreement.html" : "answer.html";

@@ -182,7 +182,9 @@
     );
     const entry = window.keywordEntries.find(
       (keywordEntry) =>
-        keywordEntry.answer === answer && keywordEntry.type === "answer"
+        (keywordEntry.answer === answer ||
+          keywordEntry.aliases?.includes(answer)) &&
+        keywordEntry.type === "answer"
     );
     const keyword = entry?.content;
 
