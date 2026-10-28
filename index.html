@@ -128,27 +128,28 @@ button {
   }
 }
   </style>
+  <link rel="stylesheet" href="theme.css" />
 </head>
 <body>
   <main class="container">
-    <p class="crown">♛</p>
+    <p class="crown">UNAUTHORIZED ACCESS // CASE FILE 2026</p>
     <h1>やんごとなき貴族の戯れ<br>― 世界征服サミット2026 ―</h1>
-    <p>選ばれし者よ、謎を解き明かせ。</p>
+    <p>謎を解き、真の犯人を特定せよ。</p>
 
-    <button id="start-button" type="button">謎解きを開始</button>
+    <button id="start-button" type="button">記録にアクセス</button>
 
     <section id="answer-area">
       <form action="answer.html" method="get">
-        <label for="answer">解答を入力してください</label><br>
+        <label for="answer">キーワードを入力</label><br>
         <input
           id="answer"
           name="answer"
           type="text"
-          placeholder="ここに解答を入力"
+          placeholder="証言から導いた解答"
           autocomplete="off"
           required
         ><br>
-        <button type="submit">解答してキーワードを開示する</button>
+        <button type="submit">照合して記録を開示</button>
       </form>
     </section>
   </main>
@@ -167,12 +168,12 @@ button {
     });
 
     answerForm.addEventListener("submit", () => {
+      const submittedAnswer = answerInput.value.trim();
       const entry = window.keywordEntries.find(
-      (keywordEntry) =>
-        (keywordEntry.answer === answer ||
-          keywordEntry.aliases?.includes(answer)) &&
-        keywordEntry.type === "answer"
-    );
+        (keywordEntry) =>
+          (keywordEntry.answer === submittedAnswer ||
+            keywordEntry.aliases?.includes(submittedAnswer))
+      );
 
       answerForm.action =
         entry?.type === "agreement" ? "agreement.html" : "answer.html";

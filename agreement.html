@@ -144,9 +144,11 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="theme.css" />
 </head>
 <body>
   <main>
+    <p class="classification">FILE 02 / AGREEMENT</p>
     <h1>あなたが解放した協定一覧</h1>
     <p id="message" aria-live="polite"></p>
 
@@ -178,13 +180,13 @@
     if (agreement && !unlockedAgreementAnswers.includes(entry.answer)) {
       unlockedAgreementAnswers.push(entry.answer);
       localStorage.setItem(storageKey, JSON.stringify(unlockedAgreementAnswers));
-      message.textContent = "Agreementが開示されました。";
+      message.textContent = "協定一覧";
       message.className = "success";
     } else if (agreement) {
-      message.textContent = "このAgreementはすでに開示されています。";
+      message.textContent = "この協定はすでに開示されています。";
       message.className = "success";
     } else if (answer !== undefined) {
-      message.textContent = "その解答ではAgreementは開示されません。";
+      message.textContent = "その解答では協定は開示されません。";
       message.className = "error";
     }
 

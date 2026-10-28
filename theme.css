@@ -1,0 +1,167 @@
+:root {
+  --navy: #111315;
+  --gold: #d34b4b;
+  --cream: #deded9;
+  --surface: #191b1e;
+  --line: #393c40;
+}
+
+body {
+  position: relative;
+  color: var(--cream);
+  font-family: "SFMono-Regular", Consolas, "Hiragino Kaku Gothic ProN", Meiryo, monospace;
+  background-color: #0b0c0d;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+body::before {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+  content: "";
+  pointer-events: none;
+}
+
+main,
+.container {
+  position: relative;
+  z-index: 2;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--gold);
+  border-radius: 0;
+  background: rgba(18, 20, 22, 0.97);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.28);
+}
+
+h1 {
+  color: var(--cream);
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-shadow: 2px 2px 0 rgba(211, 75, 75, 0.22);
+}
+
+.classification {
+  margin: 0 0 12px;
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.16em;
+  text-align: left;
+}
+
+.crown {
+  color: var(--gold);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.16em;
+}
+
+#message:empty {
+  display: none;
+}
+
+#message {
+  padding: 12px;
+  border-left: 2px solid var(--line);
+  background: rgba(255, 255, 255, 0.025);
+  text-align: left;
+}
+
+.success {
+  border-left-color: #82916a !important;
+  color: #b7c59b;
+}
+
+.error {
+  border-left-color: var(--gold) !important;
+  color: #ed8580;
+}
+
+#answer-area {
+  border-top-color: var(--line);
+}
+
+input {
+  border-color: #484b4f;
+  border-radius: 0;
+  color: var(--cream);
+  background: #0d0e10;
+}
+
+input:focus {
+  border-color: var(--gold);
+  outline: 1px solid var(--gold);
+  outline-offset: 2px;
+}
+
+button,
+.page-actions a {
+  border: 1px solid var(--gold);
+  border-radius: 0;
+  color: var(--cream);
+  background: #241719;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+button:hover,
+.page-actions a:hover {
+  color: #0b0c0d;
+  background: var(--gold);
+}
+
+button:focus-visible,
+.page-actions a:focus-visible,
+.keyword summary:focus-visible,
+.agreement summary:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 3px;
+}
+
+.keyword,
+.agreement {
+  border-color: var(--gold);
+  background: var(--surface);
+}
+
+.keyword summary,
+.agreement summary {
+  color: var(--cream);
+  font-size: 1.05rem;
+  letter-spacing: 0.035em;
+}
+
+.keyword summary::marker,
+.agreement summary::marker {
+  color: var(--gold);
+}
+
+.keyword p,
+.agreement p {
+  color: #b7b8b4;
+  line-height: 1.9;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
