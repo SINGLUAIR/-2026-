@@ -132,7 +132,7 @@ window.keywordEntries = [
     type: "answer",
     title: "[SYS_SECURE_LOG // ACCESS_ID: BEAST & ？]",
     content: "to Mad scientist"
-  }
+  },
 　 {
     answer: "net",
     aliases: ["NET","Net","ネット"],
