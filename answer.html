@@ -108,51 +108,50 @@
     }
 
     body {
-  min-height: 100dvh;
-  padding:
-    max(20px, env(safe-area-inset-top))
-    max(16px, env(safe-area-inset-right))
-    max(20px, env(safe-area-inset-bottom))
-    max(16px, env(safe-area-inset-left));
-}
+      min-height: 100dvh;
+      padding:
+        max(20px, env(safe-area-inset-top))
+        max(16px, env(safe-area-inset-right))
+        max(20px, env(safe-area-inset-bottom))
+        max(16px, env(safe-area-inset-left));
+    }
 
-.keyword {
-  overflow-wrap: anywhere;
-}
+    .keyword {
+      overflow-wrap: anywhere;
+    }
 
-@media (max-width: 480px) {
-  main {
-    padding: 32px 18px;
-  }
+    @media (max-width: 480px) {
+      main {
+        padding: 32px 18px;
+      }
 
-  h1 {
-    font-size: 1.6rem;
-    line-height: 1.45;
-  }
+      h1 {
+        font-size: 1.6rem;
+        line-height: 1.45;
+      }
 
-  #message {
-    margin: 22px 0;
-  }
+      #message {
+        margin: 22px 0;
+      }
 
-  .keyword {
-    padding: 0;
-  }
+      .keyword {
+        padding: 0;
+      }
 
-  .keyword details {
-    padding: 14px;
-  }
+      .keyword details {
+        padding: 14px;
+      }
 
-  .page-actions {
-    gap: 8px;
-    margin-top: 24px;
-  }
+      .page-actions {
+        gap: 8px;
+        margin-top: 24px;
+      }
 
-  .page-actions a {
-    padding: 10px 6px;
-    font-size: 0.9rem;
-  }
-}
-
+      .page-actions a {
+        padding: 10px 6px;
+        font-size: 0.9rem;
+      }
+    }
   </style>
   <link rel="stylesheet" href="theme.css" />
 </head>
@@ -173,31 +172,32 @@
   <script src="keywords.js"></script>
   <script>
     const storageKey = "unlockedKeywords";
-    const answer = new URLSearchParams(window.location.search)
-      .get("answer")
-      ?.trim();
+    const rawAnswer = new URLSearchParams(window.location.search).get("answer");
+    const answer = rawAnswer?.trim();
+    const normalizedAnswer = answer?.toLowerCase();
 
     const keywordList = document.getElementById("keyword-list");
     const message = document.getElementById("message");
-    const unlockedKeywords = JSON.parse(
-      localStorage.getItem(storageKey) || "[]"
-    );
-    const entry = window.keywordEntries.find(
-      (keywordEntry) =>
-        (keywordEntry.answer === answer ||
-          keywordEntry.aliases?.includes(answer)) &&
-        keywordEntry.type === "answer"
-    );
-    const keyword = entry?.content;
+    const unlockedKeywords = JSON.parse(localStorage.getItem(storageKey) || "[]");
 
-    if (keyword && !unlockedKeywords.includes(keyword)) {
-      unlockedKeywords.push(keyword);
-      localStorage.setItem(storageKey, JSON.stringify(unlockedKeywords));
-      message.textContent = `キーワード「${keyword}」が開示されました。`;
-      message.className = "success";
-    } else if (keyword) {
-      message.textContent = `キーワード「${keyword}」はすでに開示されています。`;
-      message.className = "success";
+    const entry = window.keywordEntries.find((keywordEntry) => {
+      if (keywordEntry.type !== "answer") return false;
+      const normalizedEntryAnswer = String(keywordEntry.answer ?? "").toLowerCase();
+      const aliases = (keywordEntry.aliases ?? []).map((alias) => String(alias).toLowerCase());
+      return normalizedEntryAnswer === normalizedAnswer || aliases.includes(normalizedAnswer);
+    });
+
+    if (entry) {
+      const unlockKey = entry.uniqueKey || entry.answer;
+      if (!unlockedKeywords.includes(unlockKey)) {
+        unlockedKeywords.push(unlockKey);
+        localStorage.setItem(storageKey, JSON.stringify(unlockedKeywords));
+        message.textContent = `キーワード「${entry.answer}」が開示されました。`;
+        message.className = "success";
+      } else {
+        message.textContent = `キーワード「${entry.answer}」はすでに開示されています。`;
+        message.className = "success";
+      }
     } else if (answer !== undefined) {
       message.textContent = "その解答ではキーワードは開示されません。";
       message.className = "error";
@@ -207,7 +207,7 @@
       .filter(
         (keywordEntry) =>
           keywordEntry.type === "answer" &&
-          unlockedKeywords.includes(keywordEntry.content)
+          unlockedKeywords.includes(keywordEntry.uniqueKey || keywordEntry.answer)
       )
       .forEach((unlockedKeyword) => {
         const item = document.createElement("li");
