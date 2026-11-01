@@ -1,10 +1,10 @@
 window.keywordEntries = [
-  { answer: "ギイン", aliases: ["ぎいん","議員"],type: "answer", title: "【証言01】", content: "犯人は政治的組織(ギイン)と繋がっている、あるいは元関係者である。" },
-  { answer: "コフウ", aliases: ["こふう","古風"], type: "answer", title: "【証言02】", content: "現場の趣味嗜好は伝統的で「コフウ（古風）」なものを好む傾向がある。" },
+  { answer: "ギイン", aliases: ["ぎいん","議員"], type: "answer", title: "【証言01】", content: "犯人は政治的組織(ギイン)と繋がっている、あるいは元関係者であったと見られる" },
+  { answer: "コフウ", aliases: ["こふう","古風"], type: "answer", title: "【証言02】", content: "現場の趣味嗜好は伝統的で「コフウ（古風）」なものを好む傾向がある" },
   { answer: "SLIM", type: "answer", title: "【証言03】", content: "防犯カメラの映像から、犯人の体型は非常に引き締まった「SLIM」な体躯であった。" },
-  { answer: "利き手", aliases: ["ききて", "キキテ"], type: "answer", title: "【証言04】", content: "遺体の傷の角度から、犯人の「利き手」は一般とは逆の特殊な癖がある。" },
-  { answer: "大人", type: "answer", title: "【証言05】", content: "今回の犯行は若造の仕業ではなく、組織を熟知した「大人（年配・ベテラン）」の周到な計画である。" },
-  { answer: "しりあい", aliases: ["知り合い"], type: "answer", title: "【証言06】", content: "犯人はドン・ガリアーノと極めて親しい「しりあい（近しい関係）」であり、警戒されずに近づけた。" },
+  { answer: "利き手", aliases: ["ききて", "キキテ"], type: "answer", title: "【証言04】", content: "遺体の傷の角度から、犯人の「利き手」は一般とは逆の特殊な動きで犯行に及んだ可能性が高い。" },
+  { answer: "大人", type: "answer", title: "【証言05】", content: "今回の犯行は若造の仕業ではなく、組織を熟知した「大人（年配・ベテラン）」の周到な計画だった。" },
+  { answer: "しりあい", aliases: ["知り合い"], type: "answer", title: "【証言06】", content: "犯人はドン・ガリアーノと極めて親しい「しりあい（近しい関係）」の人物だった。" },
   { answer: "川下", type: "answer", title: "【証言07】", content: "逃走経路の痕跡から、アジトの「川下（下流エリア）」へ向かったことが判明している。" },
   { answer: "茶会", type: "answer", title: "【証言08】", content: "事件の直前、犯人は特定の「茶会」の席でドンと密談していた。" },
   { answer: "美声", type: "answer", title: "【証言09】", content: "脅迫や交渉の際、周囲を魅了するような「美声」を発していたという目撃証言がある。" },
@@ -14,21 +14,21 @@ window.keywordEntries = [
   { answer: "フィット", type: "answer", title: "[LOG_A3]", content: "犯人をいち早く特定した優秀な駒を、私の新しい『右腕（後継者）』にしてやる。" },
   { answer: "HAKUI", type: "answer", title: "[LOG_A4]", content: "ボスに従うだけの首領など名ばかり。ただの傀儡（奴隷）に過ぎない。" },
   { answer: "わりあい", aliases: ["割合"], type: "answer", title: "[LOG_A5]", content: "遺体はダミーだ。ガリアーノは生きてこの部屋のどこかで高笑いしている。" },
-  { answer: "ひかげ", aliases: ["日陰", "日かげ"], type: "answer", title: "[LOG_B1]", content: "ガリアーノは過去、マッドサイエンティストの研究と成果を全て奪い、闇に葬った。" },
+  { answer: "ひかげ", aliases: ["日陰", "日かげ"], type: "answer", title: "[LOG_B1]", content: "ガリアーノは過去、マッドサイエンティストの研究と成果を全て奪い取ろうとした。" },
   { answer: "あき", type: "answer", title: "[LOG_B2]", content: "サイエンティストのガリアーノへの憎しみは本物だ。奴の復讐心を利用できるかもしれない。" },
   { answer: "あく", type: "answer", title: "[LOG_B3]", content: "ドンの致命的な弱点……それは過去にサイエンティストへ行った非道な裏切りそのものだ。" },
   { answer: "えい", type: "answer", title: "[LOG_B4]", content: "サイエンティストはあの男（ドン）を社会的に、そして精神的に抹殺する機会を狙っている。" },
   { answer: "コウフ", type: "answer", title: "[LOG_B5]", content: "ドンを黙らせる唯一の手立て……それはサイエンティストが隠し持つ『秘策』のみ。" },
   { answer: "シンロ", type: "answer", title: "[LOG_C1]", content: "サイエンティストと裏で組むための合言葉は【ペルセポネ】。ボスの生存を伝えよ。" },
   { answer: "シンサ", type: "answer", title: "[LOG_C2]", content: "サイエンティストは『ドンの生存』を知らない。それを教え、合言葉【ペルセポネ】を告げよ。" },
-  { answer: "かい", type: "answer", title: "[LOG_C3]", content: "【ペルセポネ】……この合言葉とともにドンの生存を伝えれば、サイエンティストは『精神掌握薬』を授けるだろう。" },
+  { answer: "かい", type: "answer", title: "[LOG_C3]", content: "【ペルセポネ】……この合言葉とともにドンの生存を伝えれば、サイエンティストは『精神掌握薬』の真価を理解する。" },
   { answer: "からみ", type: "answer", title: "[LOG_C4]", content: "サイエンティストの秘策『精神掌握薬』を手に入れろ。提示用コードは【ペルセポネ】だ。" },
   {
     answer: "こかげ",
     aliases: ["木陰", "木かげ"],
     type: "agreement",
     title: "[協定第一条：クリア要件]",
-    content: "本サミット終了時までに、個人またはチームの「支配ポイント（支配率）が規定値（例：500pt）以上に達していることをクリアの絶対条件とする。」"
+    content: "本サミット終了時までに、個人またはチームの「支配ポイント（支配率）」が規定値（例：500pt）以上に達していることをクリアの絶対条件とする。"
   },
   {
     answer: "かり",
@@ -68,7 +68,7 @@ window.keywordEntries = [
     aliases: ["犬", "いぬ"],
     type: "agreement",
     title: "[協定第七条：特殊ピースの受領]",
-    content: "マッドサイエンティストに特定の合言葉（キーワード）を提示した場合、時空歪曲ピースを受領できる"
+    content: "マッドサイエンティストに特定の合言葉（キーワード）を提示した場合、時空歪曲ピースを受領できる。"
   },
   {
     answer: "嗅覚",
@@ -96,7 +96,7 @@ window.keywordEntries = [
     aliases: ["きゅうこん"],
     type: "agreement",
     title: "[協定第十一条：新ボスの座]",
-    content: "条件を満たして最初に最終報告を完了した者が死んだボスに代わる「次期裏社会の首領（ノーマルクリア）」として承認される"
+    content: "条件を満たして最初に最終報告を完了した者が死んだボスに代わる「次期裏社会の首領（ノーマルクリア）」として承認される。"
   },
   {
     answer: "あい",
@@ -117,27 +117,29 @@ window.keywordEntries = [
     aliases: ["匠"],
     type: "agreement",
     title: "[協定第十四条：裏の支配権]",
-    content: "単に犯人を暴いてボスに就任するだけでは、このサミットの「真の勝者」とは言えない"
+    content: "単に犯人を暴いてボスに就任するだけでは、このサミットの「真の勝者」とは言えない。"
   },
   {
     answer: "キュウゴ",
     aliases: ["きゅうご","救護"],
     type: "agreement",
     title: "[協定第十五条：ボスの秘密]",
-    content: "前ボスが隠し持っていた「秘密」を発見し、最終報告時にGMへ提示できた者のみが、世界全体を掌握する「真の支配者（トゥルークリア）」となる。"
-  }
+    content: "前ボスが隠し持っていた「秘密」を発見し、最終報告時にGMへ提示できた者のみが、世界全体を掌握する「真の支配者（トゥルークリア）」として認定される。"
+  },
   {
     answer: "BEAST",
     aliases: ["beast","ビースト","Beast"],
     type: "answer",
     title: "[SYS_SECURE_LOG // ACCESS_ID: BEAST & ？]",
-    content: "to Mad scientist1"
+    content: "to Mad scientist",
+    uniqueKey: "BEAST"
   },
-　 {
+  {
     answer: "net",
     aliases: ["NET","Net","ネット"],
     type: "answer",
     title: "[SYS_SECURE_LOG // ACCESS_ID: ？& net] ",
-    content: "to Mad scientist2"
+    content: "to Mad scientist",
+    uniqueKey: "net"
   }
 ];
