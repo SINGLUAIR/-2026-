@@ -131,13 +131,13 @@ window.keywordEntries = [
     aliases: ["beast","ビースト","Beast"],
     type: "answer",
     title: "[SYS_SECURE_LOG // ACCESS_ID: BEAST & ？]",
-    content: "to Mad scientist"
+    content: "to Mad scientist1"
   },
 　 {
     answer: "net",
     aliases: ["NET","Net","ネット"],
     type: "answer",
     title: "[SYS_SECURE_LOG // ACCESS_ID: ？& net] ",
-    content: "to Mad scientist"
+    content: "to Mad scientist2"
   }
 ];
