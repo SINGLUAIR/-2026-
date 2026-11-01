@@ -126,4 +126,18 @@ window.keywordEntries = [
     title: "[協定第十五条：ボスの秘密]",
     content: "前ボスが隠し持っていた「秘密」を発見し、最終報告時にGMへ提示できた者のみが、世界全体を掌握する「真の支配者（トゥルークリア）」となる。"
   }
+  {
+    answer: "BEAST",
+    aliases: ["beast","ビースト","Beast"],
+    type: "answer",
+    title: "[SYS_SECURE_LOG // ACCESS_ID: BEAST & ？]",
+    content: "to Mad scientist"
+  }
+　 {
+    answer: "net",
+    aliases: ["NET","Net","ネット"],
+    type: "answer",
+    title: "[SYS_SECURE_LOG // ACCESS_ID: ？& net] ",
+    content: "to Mad scientist"
+  }
 ];
